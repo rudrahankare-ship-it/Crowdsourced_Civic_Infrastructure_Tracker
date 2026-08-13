@@ -1,0 +1,4 @@
+/* Each community report now uses an image that directly matches its issue. */
+.post-image.img-road { background-image: linear-gradient(#00000008, #00000035), url('assets/pothole-report.png'); background-position: center 65%; }
+.post-image.img-light { background-image: linear-gradient(#00000008, #00000030), url('assets/streetlight-report.png'); background-position: center 56%; }
+.post-image.img-walk { background-image: linear-gradient(#00000008, #00000030), url('assets/footpath-report.png'); background-position: center 62%; }

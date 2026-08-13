@@ -1,0 +1,13 @@
+/* Three-dimensional cylindrical scrolling treatment */
+@media (min-width: 781px) {
+  html { scroll-snap-type: y proximity; }
+  .cylindrical-scroll { perspective: 1200px; overflow-x: hidden; background: radial-gradient(ellipse at 50% 25%, #ffffff 0, #f7f4ed 55%, #eae5da 100%); }
+  .cylindrical-scroll main { transform-style: preserve-3d; }
+  .cylinder-panel { transform-origin: 50% 50%; transform: translateZ(var(--cylinder-depth, 0)) rotateX(var(--cylinder-angle, 0deg)) scale(var(--cylinder-scale, 1)); opacity: var(--cylinder-opacity, 1); transition: transform .14s ease-out, opacity .14s ease-out; will-change: transform, opacity; scroll-snap-align: center; backface-visibility: hidden; }
+  .cylinder-panel:nth-of-type(odd) { box-shadow: 0 14px 40px rgba(28, 60, 48, .035); }
+  .cylinder-panel:hover { --cylinder-scale: 1 !important; opacity: 1 !important; }
+  .cylindrical-scroll main::before, .cylindrical-scroll main::after { content: ""; position: fixed; left: 0; right: 0; height: 90px; z-index: 4; pointer-events: none; }
+  .cylindrical-scroll main::before { top: 0; background: linear-gradient(#f7f4ed 0%, transparent 100%); }
+  .cylindrical-scroll main::after { bottom: 0; background: linear-gradient(transparent 0%, #f7f4ed 100%); }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .cylinder-panel { transform: none !important; transition: none !important; opacity: 1 !important; } }

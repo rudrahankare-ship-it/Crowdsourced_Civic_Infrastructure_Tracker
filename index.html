@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f5f53" />
+    <title>CivicSignal — See it. Report it. Fix it.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="extras.css" />
+    <link rel="stylesheet" href="cylinder.css" />
+    <link rel="stylesheet" href="dark-background.css" />
+    <link rel="stylesheet" href="polished-cylinder.css" />
+    <link rel="stylesheet" href="cards-cylinder.css" />
+    <link rel="stylesheet" href="live-map.css" />
+    <link rel="stylesheet" href="report-images.css" />
+  </head>
+  <body>
+    <div class="app-frame">
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="CivicSignal home"><span class="brand-mark">↟</span> Civic<span>Signal</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#community">Community</a>
+        <a href="#impact">Our impact</a>
+      </nav>
+      <button class="report-trigger" data-scroll-report><span>＋</span> Report an issue</button>
+    </header>
+    <div class="city-pulse"><div class="pulse-inner"><span class="pulse-live"><i></i> LIVE CITY PULSE</span><span><b>18</b> new reports this week</span><span class="pulse-divider"></span><span>Most reported: <b>Road damage</b></span><span class="pulse-divider"></span><span>Nearest resolution: <b>Ward 12 · 3 days ago</b></span><a href="#community">See the map →</a></div></div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Neighbourhood action, made visible</p>
+          <h1>Better streets begin<br />with <em>your signal.</em></h1>
+          <p class="hero-intro">Spot a pothole, broken streetlight, or unsafe footpath? Share it with your community and send it directly to the people who can fix it.</p>
+          <div class="hero-actions">
+            <button class="primary-button" data-scroll-report>Report an issue <span>→</span></button>
+            <a class="text-link" href="#community">Explore local reports <span>↓</span></a>
+          </div>
+          <div class="issue-chips"><span>🕳 Road safety</span><span>💡 Streetlights</span><span>♿ Footpaths</span><span>♻ Sanitation</span></div>
+          <div class="hero-trust"><div class="avatar-stack"><span>R</span><span>M</span><span>K</span><span>+</span></div><p>Joined by <strong>2,400+ local residents</strong><br />making their streets safer.</p></div>
+        </div>
+        <div class="hero-visual" aria-label="A resident has reported a road pothole">
+          <div class="sun-blob"></div>
+          <div class="map-card card-shadow"><div id="liveMap" aria-label="Interactive map of nearby civic reports"></div><div class="map-zoom-buttons" aria-label="Map zoom controls"><button id="zoomIn" type="button" aria-label="Zoom in">+</button><button id="zoomOut" type="button" aria-label="Zoom out">−</button></div><button class="map-label" id="locateButton" type="button">Locating nearby reports…</button></div>
+          <div class="report-preview card-shadow">
+            <div class="preview-photo" role="img" aria-label="Road pothole"></div>
+            <div class="preview-content"><p class="preview-status"><i></i> Reported just now</p><strong>Deep pothole near<br />Lake Road crossing</strong><p>Ward 17 · Pune</p><div class="mini-support"><span>♥ 24</span><span>◌ 8</span></div></div>
+          </div>
+          <div class="fix-card card-shadow"><span class="check">✓</span><div><strong>Your report was sent</strong><small>To Pune Municipal Corporation</small></div></div>
+          <div class="nearby-card card-shadow"><span class="nearby-icon">⌖</span><div><small>YOUR AREA</small><strong>7 issues need support</strong></div><span class="nearby-arrow">→</span></div>
+        </div>
+      </section>
+
+      <section class="notice-strip"><div class="notice-icon">✦</div><p><strong>One report can change a street.</strong> Reports with 25+ community supporters are prioritised in the municipal follow-up queue.</p><a href="#community">Learn how it works →</a></section>
+
+      <section class="stats-strip" id="impact">
+        <div><strong>1,248</strong><span>issues reported</span></div><div><strong>87</strong><span>neighbourhoods active</span></div><div><strong>364</strong><span>issues resolved</span></div><div><strong>18.6k</strong><span>community supporters</span></div>
+      </section>
+
+      <section class="report-section" id="report">
+        <div class="section-heading"><p class="eyebrow"><span></span> Make your voice count</p><h2>Report what needs<br /><em>attention.</em></h2><p>It takes less than two minutes. Your report goes public, gathers community support, and is automatically prepared for the municipal corporation.</p></div>
+        <form class="report-form" id="reportForm">
+          <div class="form-top"><span class="form-number">01</span><div><h3>Show us the issue</h3><p>A clear photo helps everyone understand what needs fixing.</p></div></div>
+          <label class="upload-zone" id="uploadZone" for="photoInput"><input id="photoInput" type="file" accept="image/*" /><span class="upload-icon">↥</span><strong>Drop a photo here, or <u>browse</u></strong><small>JPG, PNG or WEBP · up to 10MB</small><img id="imagePreview" alt="Your selected report" /></label>
+          <div class="form-top second"><span class="form-number">02</span><div><h3>Tell us a little more</h3></div></div>
+          <div class="form-fields"><label>What did you spot?<select id="issueType" required><option value="Pothole / road damage">Pothole / road damage</option><option value="Broken streetlight">Broken streetlight</option><option value="Damaged footpath">Damaged footpath</option><option value="Waste / sanitation">Waste / sanitation</option><option value="Other civic issue">Other civic issue</option></select></label><label>Where is it?<input id="locationInput" required placeholder="e.g. Near Lake Road crossing" /></label></div>
+          <label class="description-label">Description<textarea id="descriptionInput" required maxlength="240" placeholder="What should people and the municipality know about this issue?"></textarea><small><span id="characterCount">0</span>/240</small></label>
+          <div class="form-footer"><p><span>✓</span> Your report will be shared with your local municipal corporation.</p><button class="primary-button" type="submit">Publish report <span>→</span></button></div>
+        </form>
+      </section>
+
+      <section class="how-section" id="how-it-works"><p class="eyebrow centered"><span></span> Small action, real momentum <span></span></p><h2>From your camera<br />to <em>real change.</em></h2><div class="steps"><article><span>01</span><div class="step-icon camera">◉</div><h3>Spot & share</h3><p>Capture the issue and add the location so people know exactly where help is needed.</p></article><article><span>02</span><div class="step-icon people">♧</div><h3>Build support</h3><p>Neighbours can react and comment, turning one report into a shared voice.</p></article><article><span>03</span><div class="step-icon send">↗</div><h3>Send it forward</h3><p>We format and forward every report to the relevant municipal department.</p></article><article><span>04</span><div class="step-icon sparkle">✦</div><h3>Track progress</h3><p>Stay informed as the issue is acknowledged, in progress, and hopefully resolved.</p></article></div></section>
+
+      <section class="community-section" id="community"><div class="community-heading"><div><p class="eyebrow"><span></span> In your community</p><h2>Issues people are<br /><em>standing behind.</em></h2></div><a class="text-link" href="#report">View all reports <span>→</span></a></div><div class="feed" id="feed">
+        <article class="post-card"><div class="post-image img-road"><span class="status-pill">Sent to municipality</span><button class="image-heart" data-like aria-label="Like report">♡</button></div><div class="post-content"><div class="post-meta"><span>Road damage</span><time>2h ago</time></div><h3>Large pothole causing traffic to swerve near the school gate</h3><p class="location">⌖ Gandhi Nagar, Ward 12</p><div class="post-actions"><button data-like>♡ <b>46</b> support</button><button data-comment>◌ <b>12</b> comments</button><button class="share-button">↗</button></div><div class="comments"><p><strong>Anika S.</strong> This is especially dangerous at night.</p><form data-comment-form><input aria-label="Add a comment" placeholder="Add your voice…" /><button>Post</button></form></div></div></article>
+        <article class="post-card"><div class="post-image img-light"><span class="status-pill status-green">Under review</span><button class="image-heart" data-like aria-label="Like report">♡</button></div><div class="post-content"><div class="post-meta"><span>Streetlight</span><time>5h ago</time></div><h3>Three streetlights out on the walking path by the park</h3><p class="location">⌖ Aundh, Ward 8</p><div class="post-actions"><button data-like>♡ <b>31</b> support</button><button data-comment>◌ <b>7</b> comments</button><button class="share-button">↗</button></div><div class="comments"><form data-comment-form><input aria-label="Add a comment" placeholder="Add your voice…" /><button>Post</button></form></div></div></article>
+        <article class="post-card"><div class="post-image img-walk"><span class="status-pill status-orange">Needs attention</span><button class="image-heart" data-like aria-label="Like report">♡</button></div><div class="post-content"><div class="post-meta"><span>Footpath</span><time>Yesterday</time></div><h3>Broken pavement tiles make this bus stop inaccessible</h3><p class="location">⌖ Kothrud, Ward 4</p><div class="post-actions"><button data-like>♡ <b>58</b> support</button><button data-comment>◌ <b>18</b> comments</button><button class="share-button">↗</button></div><div class="comments"><form data-comment-form><input aria-label="Add a comment" placeholder="Add your voice…" /><button>Post</button></form></div></div></article>
+      </div></section>
+
+      <section class="voices-section"><div class="voices-intro"><p class="eyebrow"><span></span> Neighbours making noise</p><h2>Local voices,<br /><em>visible progress.</em></h2><p>Every photo, comment, and show of support makes it harder for an important issue to be ignored.</p><div class="face-row"><span>AS</span><span>PR</span><span>NM</span><span>VT</span><strong>18,600 neighbours are here</strong></div></div><div class="voice-wall"><article class="quote-card featured"><span class="quote-mark">“</span><p>Our streetlight report got 47 supporters in two days. The repair team came by the next week.</p><footer><span class="mini-avatar">A</span><div><strong>Aarav Mehta</strong><small>Baner resident</small></div><em>Resolved ✓</em></footer></article><article class="quote-card small-card"><span class="quote-mark">“</span><p>It feels good to know I can do something beyond just complaining.</p><footer><span class="mini-avatar purple">S</span><div><strong>Shreya Kulkarni</strong><small>Kothrud</small></div></footer></article><div class="resolution-card"><span>364</span><strong>issues resolved<br />with community action</strong><p>And counting, one signal at a time.</p></div></div></section>
+
+      <section class="cta"><div><p class="eyebrow"><span></span> Your street is worth speaking up for</p><h2>See something?<br /><em>Start the signal.</em></h2></div><button class="light-button" data-scroll-report>Report an issue <span>→</span></button></section>
+    </main>
+    <footer><a class="brand" href="#top"><span class="brand-mark">↟</span> Civic<span>Signal</span></a><p>Built by residents, for better cities.</p><div><a href="#">Privacy</a><a href="#">Contact</a></div></footer>
+    </div>
+    <div class="toast" id="toast" role="status"><span>✓</span><div><strong>Report published!</strong><p>Your civic signal has been sent to the municipality.</p></div></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

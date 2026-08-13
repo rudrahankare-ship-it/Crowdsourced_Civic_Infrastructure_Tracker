@@ -1,0 +1,13 @@
+/* A single clean page surface floating within the darker cylinder background. */
+@media (min-width: 781px) {
+  body.cylindrical-scroll { padding: 25px; }
+  .app-frame { max-width: 1320px; margin: 0 auto; overflow: hidden; isolation: isolate; border-radius: 44px; background: radial-gradient(ellipse 80% 55% at 50% 38%, #fffefa 0%, #f8f4ea 42%, #e4ecdf 100%); border: 1px solid rgba(255,255,255,.42); box-shadow: 0 36px 95px rgba(0,16,13,.55), inset 0 1px rgba(255,255,255,.9), inset 18px 0 35px rgba(26,64,53,.13), inset -18px 0 35px rgba(26,64,53,.13); }
+  .app-frame::before { content: ""; position: absolute; pointer-events: none; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(13,51,43,.20) 0%, rgba(21,84,70,.07) 8%, transparent 22%, transparent 78%, rgba(21,84,70,.07) 92%, rgba(13,51,43,.20) 100%), radial-gradient(ellipse 24% 100% at 0% 50%, rgba(7,43,36,.16), transparent 72%), radial-gradient(ellipse 24% 100% at 100% 50%, rgba(7,43,36,.16), transparent 72%); }
+  .app-frame::after { content: ""; position: absolute; pointer-events: none; inset: 0; z-index: -1; border-radius: inherit; box-shadow: inset 0 48px 42px -48px #fff, inset 0 -45px 45px -48px rgba(8,48,40,.42); }
+  .app-frame .site-header { max-width: none; padding-left: 44px; padding-right: 44px; }
+  .app-frame main { background: transparent; box-shadow: none; }
+  .app-frame footer { max-width: none; padding-left: 44px; padding-right: 44px; }
+  .cylinder-panel { transform: none !important; transition: none !important; }
+  .cylindrical-scroll main::before, .cylindrical-scroll main::after { display: none; }
+}
+@media (max-width: 780px) { .app-frame { overflow: hidden; } }

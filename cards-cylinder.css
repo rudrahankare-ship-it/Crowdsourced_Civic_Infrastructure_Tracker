@@ -1,0 +1,48 @@
+/* Individual cards arranged in a lightweight inner-cylinder scroll. */
+@media (min-width: 781px) {
+  .app-frame { max-width: none !important; margin: 0 !important; overflow: visible !important; background: transparent !important; border: 0 !important; box-shadow: none !important; }
+  .app-frame::before, .app-frame::after { display: none !important; }
+  .app-frame .site-header, .app-frame footer { max-width: 1220px; margin: 0 auto; padding-left: 28px; padding-right: 28px; background: transparent; }
+  .app-frame main { background: transparent; padding: 8px 0 20px; }
+  .cylindrical-scroll { perspective: 1500px; }
+  .cylinder-card { width: calc(100% - 64px); max-width: 1240px; margin: 26px auto !important; overflow: hidden; border-radius: 24px; background: #f7f4ed; border: 1px solid rgba(255,255,255,.52); box-shadow: 0 16px 34px rgba(5,32,26,.24); transform: rotateX(3deg) translateZ(-30px) scale(.975); opacity: .88; transition: transform .45s cubic-bezier(.22,.75,.28,1), opacity .35s ease, box-shadow .45s ease; scroll-snap-align: center; }
+  .cylinder-card.in-cylinder-focus { transform: rotateX(0) translateZ(32px) scale(1); opacity: 1; box-shadow: 0 27px 55px rgba(5,32,26,.38); }
+  .cylinder-card.hero { min-height: 555px; }
+  .cylinder-card.hero { transform: none; opacity: 1; }
+  .cylinder-card.stats-strip { padding-left: 9%; padding-right: 9%; }
+  .cylinder-card.report-section { padding-top: 90px; padding-bottom: 90px; }
+  .cylinder-card.how-section { background: #e4efe5; }
+  .cylinder-card.community-section { background: #f7f4ed; }
+  .cylinder-card.voices-section { background: #fffdf8; }
+  .cylinder-card.cta { min-height: 250px; }
+  .cylinder-card.notice-strip { width: min(1050px, calc(100% - 180px)); margin-top: 26px !important; margin-bottom: 26px !important; }
+}
+@media (max-width: 780px) { .cylinder-card { margin: 14px 10px; border-radius: 16px; overflow: hidden; box-shadow: 0 9px 25px rgba(8,42,35,.10); } }
+@media (prefers-reduced-motion: reduce) { .cylinder-card { transform: none !important; transition: none !important; opacity: 1 !important; } }
+
+/* Keep stat text readable when the stats strip is presented as a light card. */
+.cylinder-card.stats-strip { background: #173e37 !important; color: #ffffff; }
+.cylinder-card.stats-strip strong { color: #ffffff; }
+.cylinder-card.stats-strip span { color: #c9e2d7; }
+.cylinder-card.stats-strip div { border-color: rgba(255, 255, 255, .17); }
+
+/* Restore the final call-to-action as a high-contrast dark civic-green card. */
+.cylinder-card.cta { background: #0f4e43; color: #ffffff; }
+.cylinder-card.cta .eyebrow { color: #c8e1d4; }
+.cylinder-card.cta h2 { color: #ffffff; }
+.cylinder-card.cta h2 em { color: #f4bb87; }
+.cylinder-card.cta .light-button { background: #ffffff; color: #0e5145; }
+
+/* Footer: dark surface with readable light text. */
+.app-frame > footer { background: #0b3730; color: #dcece4; }
+.app-frame > footer .brand { color: #f7fffb; }
+.app-frame > footer .brand > span:not(.brand-mark) { color: #55b99a; }
+.app-frame > footer p, .app-frame > footer a { color: #b9d0c6; }
+.app-frame > footer a:hover { color: #ffffff; }
+
+/* Header contrast on the dark cylinder backdrop. */
+.app-frame > .site-header .brand { color: #f7fffb; }
+.app-frame > .site-header .brand > span:not(.brand-mark) { color: #63c3a5; }
+.app-frame > .site-header nav a { color: #d4e8df; }
+.app-frame > .site-header nav a:hover { color: #ffffff; }
+.app-frame > .site-header .report-trigger { background: #138370; color: #ffffff; }

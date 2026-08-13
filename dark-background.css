@@ -1,0 +1,9 @@
+/* Darker outer interface only — existing cards retain their original palette. */
+@media (min-width: 781px) {
+  body.cylindrical-scroll {
+    background: radial-gradient(ellipse at 50% 10%, #315b52 0%, #183b35 45%, #0d2521 100%) !important;
+  }
+  .cylindrical-scroll main {
+    box-shadow: 0 20px 56px rgba(4, 20, 17, .20);
+  }
+}
