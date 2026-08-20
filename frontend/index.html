@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civic Infrastructure Tracker</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header><nav class="navbar"><h1>CivicTrack</h1><a href="#report">Report Issue</a></nav></header>
+  <main>
+    <section class="hero"><div><p class="tag">Crowdsourced Civic Infrastructure</p><h2>Report problems. Improve your community.</h2><p>Help identify potholes, broken streetlights, waste problems and other civic infrastructure issues.</p><a class="btn" href="#report">Report an Issue</a></div></section>
+    <section class="stats"><div class="card"><strong id="reportedCount">0</strong><span>Issues Reported</span></div><div class="card"><strong>24</strong><span>Resolved</span></div><div class="card"><strong>8</strong><span>Areas Covered</span></div></section>
+    <section id="report" class="report-section"><h2>Report a Civic Issue</h2><form id="issueForm"><label>Issue Type<select id="issueType" required><option value="">Select an issue</option><option>Pothole</option><option>Broken Streetlight</option><option>Waste Management</option><option>Water Leakage</option><option>Other</option></select></label><label>Location<input id="location" type="text" placeholder="Enter location" required></label><label>Description<textarea id="description" rows="5" placeholder="Describe the issue" required></textarea></label><button class="btn" type="submit">Submit Report</button></form><p id="message" role="status"></p></section>
+  </main>
+  <footer><p>© 2026 CivicTrack — Community powered civic reporting</p></footer>
+  <script src="js/script.js"></script>
+</body>
+</html>
