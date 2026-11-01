@@ -1,0 +1,12 @@
+# Runtime data created by the local Java server
+database/civicsignal.db
+database/civicsignal.db-*
+.env
+backend/uploads/
+node_modules/
+
+# Maven build output
+target/
+backend/target/
+.m2/
+.tools/
