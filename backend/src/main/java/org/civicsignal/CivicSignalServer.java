@@ -119,8 +119,8 @@ public final class CivicSignalServer {
       return;
     }
     if (email.isBlank() || password.isBlank()) throw new IllegalStateException("Set both CIVICSIGNAL_ADMIN_EMAIL and CIVICSIGNAL_ADMIN_PASSWORD to enable corporation employee sign-in.");
-    if (!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$") || password.length() < 12 || password.length() > 128) {
-      throw new IllegalStateException("The corporation admin email must be valid and its password must be 12 to 128 characters.");
+    if (!email.matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$") || password.length() < 8 || password.length() > 128) {
+      throw new IllegalStateException("The corporation admin email must be valid and its password must be 8 to 128 characters.");
     }
     String name = env("CIVICSIGNAL_ADMIN_NAME", "Corporation staff").trim();
     if (name.isBlank() || name.length() > 80) name = "Corporation staff";

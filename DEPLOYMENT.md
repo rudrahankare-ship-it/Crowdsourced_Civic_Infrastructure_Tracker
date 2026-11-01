@@ -5,7 +5,7 @@
 The Java server serves both the website in `frontend/app/` and the API, so one Render web service can host the complete app.
 
 1. In Render, choose **New → Blueprint** and connect this GitHub repository. Render reads `render.yaml` and uses the root `Dockerfile` to build the service.
-2. Set the requested secret values when Render prompts for them: `MONGODB_URI`, `CIVICSIGNAL_ADMIN_EMAIL`, and `CIVICSIGNAL_ADMIN_PASSWORD`. Use an employee email and a unique password of at least 12 characters. `MONGODB_DATABASE` and `CIVICSIGNAL_ADMIN_NAME` already have defaults in the blueprint.
+2. Set the requested secret values when Render prompts for them: `MONGODB_URI`, `CIVICSIGNAL_ADMIN_EMAIL`, and `CIVICSIGNAL_ADMIN_PASSWORD`. Use an employee email and a unique password of 8 to 128 characters. `MONGODB_DATABASE` and `CIVICSIGNAL_ADMIN_NAME` already have defaults in the blueprint.
 3. In MongoDB Atlas, add the Render service's outbound IP ranges to the cluster project's **Network Access** list. In Render, find them in the service's **Connect → Outbound** panel.
 4. Wait for the Render deployment to become live, then open its `onrender.com` URL. The backend uses Render's `PORT` environment variable automatically.
 5. Sign in to the employee portal with the configured admin email and password.
