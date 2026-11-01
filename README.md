@@ -23,3 +23,5 @@ Corporation employees use the **Corporation employee sign in** link on the start
 Requirements: JDK 21+ and Maven. The API includes `GET`/`POST /api/reports`, `POST /api/reports/{id}/like`, and `POST /api/reports/{id}/comments`. Corporation endpoints are `GET /api/admin/reports` and `PATCH /api/admin/reports/{id}/status`; both require an employee session. `GET /api/reports` accepts an `X-Voter-Id` UUID and returns each report's `liked` state; the like endpoint requires this ID and toggles that browser's vote. The frontend creates and stores the ID per browser.
 
 Set `PORT` to use a port other than `8000`. To forward reports automatically, configure `SMTP_HOST`, `MUNICIPAL_EMAIL`, and (if required) `SMTP_PORT`, `SMTP_TLS`, `SMTP_USER`, `SMTP_PASSWORD`, and `SMTP_FROM` in `.env` or as environment variables before starting the server. Without them, reports are stored with municipal status `queued`.
+
+Deployment instructions for Render and the optional Vercel frontend are in [DEPLOYMENT.md](DEPLOYMENT.md).

@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: civicsignal
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/auth/session
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DATABASE
+        value: civicsignal
+      - key: CIVICSIGNAL_ADMIN_EMAIL
+        sync: false
+      - key: CIVICSIGNAL_ADMIN_NAME
+        value: Corporation Employee
+      - key: CIVICSIGNAL_ADMIN_PASSWORD
+        sync: false

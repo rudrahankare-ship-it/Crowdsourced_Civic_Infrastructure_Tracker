@@ -1,0 +1,12 @@
+.git
+.env
+.env.*
+!.env.example
+node_modules
+.m2
+.tools
+target
+backend/target
+backend/uploads
+database/civicsignal.db
+database/civicsignal.db-*
