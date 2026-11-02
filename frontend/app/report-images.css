@@ -86,6 +86,17 @@ html { scroll-snap-type: none !important; }
 .municipal-report-description { margin: 10px 0; line-height: 1.55; white-space: pre-wrap; }
 .municipal-report-activity { color: #6b7c75; font-size: 12px; }
 .municipal-report-image { grid-column: 1 / -1; display: block; max-width: min(100%, 560px); max-height: 300px; border-radius: 10px; object-fit: contain; object-position: left center; background: #e8ece5; }
+.municipal-report-image[role="button"] { cursor: zoom-in; }
+.municipal-report-image[role="button"]:focus-visible { outline: 3px solid #176759; outline-offset: 3px; }
+.municipal-image-unavailable { grid-column: 1 / -1; margin: 0; color: #8a5a46; font-size: 12px; }
+.municipal-comments { grid-column: 1 / -1; min-width: 0; padding: 16px 18px; border: 1px solid #e2e8e1; border-radius: 12px; background: #fbfcf8; }
+.municipal-comments h3 { margin: 0 0 12px; color: #17342f; font: 700 15px "DM Sans", sans-serif; }
+.municipal-comment-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.municipal-comment-list li { padding: 11px 12px; border-radius: 8px; background: #fff; }
+.municipal-comment-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; color: #536a63; font-size: 11px; }
+.municipal-comment-meta time { color: #87928c; }
+.municipal-comment-list p, .municipal-no-comments { margin: 6px 0 0; color: #334d44; font-size: 13px; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.municipal-no-comments { color: #73837d; }
 .municipal-status-control { display: grid; align-content: start; justify-items: stretch; gap: 8px; min-width: 190px; }
 .municipal-status-control label { color: #536a63; font-size: 11px; font-weight: 700; }
 .municipal-status-control select { display: block; width: 100%; margin-top: 6px; padding: 10px; border: 1px solid #d9dfd8; border-radius: 8px; background: #fff; color: #17342f; font: 12px "DM Sans", sans-serif; }

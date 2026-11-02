@@ -474,11 +474,60 @@ function renderMunicipalReports() {
     if (report.image_url) {
       const image = document.createElement('img');
       image.className = 'municipal-report-image';
-      image.src = report.image_url;
+      image.src = new URL(report.image_url, window.location.href).href;
+      image.dataset.fullImageUrl = image.src;
       image.alt = `${report.issue_type || 'Issue'} at ${report.location || 'reported location'}`;
       image.loading = 'lazy';
+      image.tabIndex = 0;
+      image.setAttribute('role', 'button');
+      image.setAttribute('aria-label', `Open full-size photo: ${image.alt}`);
+      image.title = 'Click to view full size';
+      image.addEventListener('click', () => openPhoto(image));
+      image.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openPhoto(image);
+        }
+      });
+      image.addEventListener('error', () => {
+        const unavailable = document.createElement('p');
+        unavailable.className = 'municipal-image-unavailable';
+        unavailable.textContent = 'Uploaded image could not be loaded.';
+        image.replaceWith(unavailable);
+      }, { once: true });
       card.append(image);
     }
+    const commentsPanel = document.createElement('section');
+    commentsPanel.className = 'municipal-comments';
+    const commentsHeading = document.createElement('h3');
+    const comments = Array.isArray(report.comments) ? report.comments : [];
+    commentsHeading.textContent = `Supporter comments (${comments.length})`;
+    commentsPanel.append(commentsHeading);
+    if (comments.length) {
+      const commentList = document.createElement('ul');
+      commentList.className = 'municipal-comment-list';
+      comments.forEach(comment => {
+        const item = document.createElement('li');
+        const commentMeta = document.createElement('div');
+        commentMeta.className = 'municipal-comment-meta';
+        const author = document.createElement('strong');
+        author.textContent = comment.author || 'Neighbour';
+        const date = document.createElement('time');
+        date.textContent = formatReportDate(comment.created_at);
+        commentMeta.append(author, date);
+        const body = document.createElement('p');
+        body.textContent = comment.body || '';
+        item.append(commentMeta, body);
+        commentList.append(item);
+      });
+      commentsPanel.append(commentList);
+    } else {
+      const emptyComments = document.createElement('p');
+      emptyComments.className = 'municipal-no-comments';
+      emptyComments.textContent = 'No supporter comments yet.';
+      commentsPanel.append(emptyComments);
+    }
+    card.append(commentsPanel);
     if (report.status_updated_at) {
       const note = document.createElement('p');
       note.className = 'municipal-status-note';
