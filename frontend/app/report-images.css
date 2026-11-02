@@ -3,6 +3,16 @@
 .post-image.img-light { background-image: url('assets/streetlight-report.png'); background-position: center 56%; }
 .post-image.img-walk { background-image: url('assets/footpath-report.png'); background-position: center 62%; }
 
+/* Keep all four how-it-works steps in a compact grid on tablet and phone widths. */
+@media (max-width: 1024px) {
+  .how-section .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 36px; }
+  .how-section .steps article { min-width: 0; }
+}
+@media (max-width: 480px) {
+  .how-section .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 18px; }
+  .how-section .steps article > span { right: 2px; }
+}
+
 /* Keep the live community feed flat and interactive within the cylinder layout. */
 body.cylindrical-scroll .community-section.cylinder-card { transform: none !important; opacity: 1 !important; }
 .community-section .post-card, .community-section .post-image, .community-section button,
